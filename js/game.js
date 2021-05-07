@@ -52,19 +52,20 @@ class Game{
                      x = 500-allPlayers[plr].distance;
                      y=500;
                      
-                     players[index - 1].x = x;
+                     players[index -1].x = x;
                      players[index - 1].y = y;
                        
                      if(index === player.index){
-                         
-                         fill("black");
-                         textSize(25);
-                         text(allPlayers[plr].name ,x-25,y+25);
-
-                         
+                     fill('black');
+                     textSize (30);
+                     text (allPlayers[plr].name,x-25,y+25);
                      }
                     
+                     fill('orange');
+                     textSize (30);
+                     text ("player1:"+allPlayers.player1.score,50,50);
                      
+                     text ("player2:"+allPlayers.player2.score,50,100);
                  
                  }
                 
@@ -100,8 +101,14 @@ class Game{
                      
                  }
                  
-                  if (player.index !== null ) {
-                    
+                  if (player.index !== null) {
+                    for(var i = 0;i<fruitGroup.length;i++){
+                        if(fruitGroup.get(i).isTouching(players)){
+                            fruitGroup.get(i).destroy();
+                            player.score = player.score + 1;
+                            player.update();
+                        }
+                    }
                   }
                 
 
